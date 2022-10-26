@@ -1,0 +1,12 @@
+dependencies:
+  commander: 9.4.1
+lockfileVersion: 5.2
+packages:
+  /commander/9.4.1:
+    dev: false
+    engines:
+      node: ^12.20.0 || >=14
+    resolution:
+      integrity: sha512-5EEkTNyHNGFPD2H+c/dXXfQZYa/scCKasxWcXJaWnNJ99pnQN9Vnmqow+p+PlFPE63Q6mThaZws1T+HxfpgtPw==
+specifiers:
+  commander: ^9.4.1
