@@ -1,8 +1,11 @@
-const { writeFileSync } = require("fs");
-const path = require("path");
-const { getCommitMessagesAfterLastTag } = require("./git");
+import { writeFileSync } from "fs";
+import path from "path";
+import { getCommitMessagesAfterLastTag } from "./git";
 
-export const generateChangelogItems = async (projectName: string, changesetDir: string) => {
+export const generateChangelogItems = async (
+  projectName: string,
+  changesetDir: string
+) => {
   const commitMessages = (await getCommitMessagesAfterLastTag()) || [];
   for (const [i, msg] of commitMessages.entries()) {
     const content = `---\n "${projectName}": patch\n---\n\n${msg}`;

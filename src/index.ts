@@ -1,6 +1,6 @@
-const { createCommand } = require("commander");
-const pkgJson = require("../package.json");
-const { bumpVersion } = require("./cmd");
+import { createCommand } from "commander";
+import pkgJson from "../package.json";
+import { bumpVersion } from "./cmd";
 
 async function main() {
   const program = createCommand(pkgJson.name)

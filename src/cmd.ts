@@ -1,19 +1,19 @@
-const { execAsync } = require("./exec");
-const { existsSync } = require("fs");
-const path = require("path");
-const { generateChangelogItems } = require("./changeset");
-const { writeNpmrc } = require("./npm");
+import { execAsync } from "./exec";
+import { existsSync } from "fs";
+import path from "path";
+import { generateChangelogItems } from "./changeset";
+import { writeNpmrc } from "./npm";
 
 interface IBumpVersion {
   versionCmd?: string;
-  npmToken: string
+  npmToken: string;
 }
 export const bumpVersion = async ({ versionCmd, npmToken }: IBumpVersion) => {
   const rootDir = process.cwd();
   const changesetDir = path.join(rootDir, ".changeset");
 
   // checking dependencies
-  const stdoutGitCheck = await execAsync("which git");
+  const stdoutGitCheck = (await execAsync("which git")) as string;
   if ((stdoutGitCheck || "").includes("not found")) {
     console.error("git is not installed !!");
     process.exit();

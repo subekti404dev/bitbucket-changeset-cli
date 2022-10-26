@@ -1,6 +1,6 @@
-const { writeFileSync } = require("fs");
-const os = require("os");
-const path = require("path");
+import { writeFileSync } from "fs";
+import os from "os";
+import path from "path";
 
 export const writeNpmrc = async (registry: string, token: string) => {
   writeFileSync(

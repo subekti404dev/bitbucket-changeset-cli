@@ -1,4 +1,4 @@
-const { exec } = require("child_process");
+import { exec } from "child_process";
 
 export const execAsync = (cmd: string) => {
   return new Promise((resolve, reject) => {

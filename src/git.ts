@@ -1,9 +1,9 @@
-const { execAsync } = require("./exec");
+import { execAsync } from "./exec";
 
 const COMMIT_MSG_CHANGELOG = "Chore: Update Changelog";
 
 export const getTags = async () => {
-  const stdout = await execAsync("git tag");
+  const stdout = (await execAsync("git tag")) as string;
   const tags = (stdout || "")
     .split("\n")
     .filter((x: string) => x)
@@ -13,16 +13,16 @@ export const getTags = async () => {
 
 export const getCommitMessagesAfterLastTag = async () => {
   const tags = await getTags();
-  const lastTags = tags?.[0];
-  let stdout;
+  const lastTags = tags?.[1];
+  let stdout: string;
   if (lastTags) {
-    stdout = await execAsync(
+    stdout = (await execAsync(
       `git log ${lastTags}..HEAD --no-merges --oneline --pretty=tformat:"%s"`
-    );
+    )) as string;
   } else {
-    stdout = await execAsync(
+    stdout = (await execAsync(
       `git log --no-merges --oneline --pretty=tformat:"%s"`
-    );
+    )) as string;
   }
 
   const commitMessages = (stdout || "")
