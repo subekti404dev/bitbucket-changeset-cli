@@ -1,8 +1,8 @@
 const { exec } = require("child_process");
 
-const execAsync = (cmd) => {
+export const execAsync = (cmd: string) => {
   return new Promise((resolve, reject) => {
-    exec(cmd, (err, stdout, _stderr) => {
+    exec(cmd, (err: any, stdout: string, _stderr: string) => {
       if (err) {
         return reject(err);
       }
@@ -10,5 +10,3 @@ const execAsync = (cmd) => {
     });
   });
 };
-
-module.exports = { execAsync };

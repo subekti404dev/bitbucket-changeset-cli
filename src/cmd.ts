@@ -4,7 +4,11 @@ const path = require("path");
 const { generateChangelogItems } = require("./changeset");
 const { writeNpmrc } = require("./npm");
 
-const bumpVersion = async ({ versionCmd, npmToken }) => {
+interface IBumpVersion {
+  versionCmd?: string;
+  npmToken: string
+}
+export const bumpVersion = async ({ versionCmd, npmToken }: IBumpVersion) => {
   const rootDir = process.cwd();
   const changesetDir = path.join(rootDir, ".changeset");
 
@@ -19,7 +23,7 @@ const bumpVersion = async ({ versionCmd, npmToken }) => {
     process.exit();
   }
 
-  let pkgJson = {};
+  let pkgJson: any = {};
   try {
     pkgJson = require(path.join(rootDir, "package.json"));
   } catch (error) {}
@@ -48,11 +52,3 @@ const bumpVersion = async ({ versionCmd, npmToken }) => {
   //   publish
   await execAsync(`npm publish --registry=${pkgJson?.publishConfig?.registry}`);
 };
-
-module.exports = { bumpVersion };
-
-// bumpVersion({
-//   npmRegistry: "verdaccio.urip13.duckdns.org",
-//   npmToken: "71RJYXhhBSrNzipF5a6R0Q==",
-//   //   versionCmd: "npx changeset version",
-// });

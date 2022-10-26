@@ -1,14 +1,14 @@
 const { createCommand } = require("commander");
-const { name, version, description } = require("../package.json");
+const pkgJson = require("../package.json");
 const { bumpVersion } = require("./cmd");
 
 async function main() {
-  const program = createCommand(name)
-    .version(version)
-    .description(description)
+  const program = createCommand(pkgJson.name)
+    .version(pkgJson.version)
+    .description(pkgJson.description)
     .argument("<npm-token>", "npm token")
-    .action((npmToken, opts) => {
-      console.log({ npmToken, opts });
+    .action((npmToken: string) => {
+      // console.log({ npmToken });
       bumpVersion({
         npmToken,
       });

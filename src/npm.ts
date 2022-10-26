@@ -2,11 +2,9 @@ const { writeFileSync } = require("fs");
 const os = require("os");
 const path = require("path");
 
-const writeNpmrc = async (registry, token) => {
+export const writeNpmrc = async (registry: string, token: string) => {
   writeFileSync(
     path.join(os.homedir(), ".npmrc"),
     `//${registry}/:_authToken="${token}"`
   );
 };
-
-module.exports = { writeNpmrc };

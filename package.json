@@ -1,11 +1,14 @@
 {
-  "name": "simple-changeset",
+  "name": "simple-changesets",
   "version": "1.0.0",
   "description": "CLI to bump npm version and publish to registry",
-  "main": "src/index.js",
-  "bin": "src/index.js",
+  "bin": {
+    "simple-changesets": "./dist/simple-changesets.js"
+  },
   "scripts": {
-    "dev": "node src/index.js"
+    "predev": "pnpm build",
+    "dev": "node dist/simple-changeset",
+    "build": "esbuild src/index.ts --bundle --outfile=dist/simple-changesets.js --platform=node --analyze"
   },
   "author": "",
   "license": "ISC",
@@ -13,7 +16,8 @@
     "commander": "^9.4.1"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.25.0"
+    "@changesets/cli": "^2.25.0",
+    "typescript": "^4.8.4"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
