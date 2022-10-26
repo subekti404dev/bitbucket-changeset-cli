@@ -11,9 +11,4 @@ const execAsync = (cmd) => {
   });
 };
 
-const getTags = async () => {
-  const res = await execAsync("git tag");
-  console.log({ res });
-};
-
-getTags()
+module.exports = { execAsync };
