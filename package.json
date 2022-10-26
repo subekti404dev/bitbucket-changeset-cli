@@ -1,13 +1,13 @@
 {
   "name": "simple-changesets",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI to bump npm version and publish to registry",
   "bin": {
     "simple-changesets": "./dist/simple-changesets.js"
   },
   "scripts": {
     "predev": "pnpm build",
-    "dev": "node dist/simple-changeset",
+    "dev": "node dist/simple-changesets.js",
     "build": "esbuild src/index.ts --bundle --outfile=dist/simple-changesets.js --platform=node --analyze"
   },
   "author": "",
