@@ -1,11 +1,11 @@
 const { createCommand } = require("commander");
-const { name, version } = require("../package.json");
+const { name, version, description } = require("../package.json");
 const { bumpVersion } = require("./cmd");
 
 async function main() {
   const program = createCommand(name)
     .version(version)
-    .description("CLI to bump npm version and publish to registry")
+    .description(description)
     .argument("<npm-token>", "npm token")
     .action((npmToken, opts) => {
       console.log({ npmToken, opts });

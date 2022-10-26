@@ -1,7 +1,7 @@
 {
-  "name": "bitbucket-changeset-cli",
+  "name": "simple-changeset",
   "version": "1.0.0",
-  "description": "cli tool",
+  "description": "CLI to bump npm version and publish to registry",
   "main": "src/index.js",
   "bin": "src/index.js",
   "scripts": {
@@ -16,6 +16,6 @@
     "@changesets/cli": "^2.25.0"
   },
   "publishConfig": {
-    "registry": "https://verdaccio.urip13.duckdns.org"
+    "registry": "https://registry.npmjs.org"
   }
 }
