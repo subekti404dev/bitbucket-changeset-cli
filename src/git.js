@@ -9,7 +9,7 @@ const getTags = async () => {
   return tags;
 };
 
-const getCommitMessagesAfterLastTag = async (tag = null) => {
+const getCommitMessagesAfterLastTag = async () => {
   const tags = await getTags();
   const lastTags = tags?.[0];
   let stdout;
