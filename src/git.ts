@@ -27,11 +27,11 @@ export const getCommitMessagesAfterLastTag = async () => {
 
   const commitMessages = (stdout || "")
     .split("\n")
-    .filter((x: string) => x && x !== COMMIT_MSG_CHANGELOG);
+    .filter((x: string) => x && !x.toLowerCase().includes('update changelog'));
   return commitMessages;
 };
 
 export const doCommitAfterBumpVersion = async (msgArg?: string) => {
   const msg = msgArg || COMMIT_MSG_CHANGELOG;
-  await execAsync(`git add . && git commit -m "${msg}" && git push`);
+  await execAsync(`git add . && git commit -m "${msg}" && git push origin HEAD:master`);
 };

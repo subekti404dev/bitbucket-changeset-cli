@@ -72,9 +72,10 @@ export const bumpVersion = async ({ versionCmd, npmToken }: IBumpVersion) => {
   //   publish
   console.log("Publish Package...");
   await execAsync(`npm publish --registry=${pkgJson?.publishConfig?.registry}`);
-  
+
   // do commit
   console.log("Commiting Changelog...");
-  await doCommitAfterBumpVersion()
+  await doCommitAfterBumpVersion();
+
   console.log("Success 👍");
 };
