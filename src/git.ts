@@ -31,7 +31,7 @@ export const getCommitMessagesAfterLastTag = async () => {
   return commitMessages;
 };
 
-export const doCommitAfterBumpVersion = async (msgArg: string) => {
+export const doCommitAfterBumpVersion = async (msgArg?: string) => {
   const msg = msgArg || COMMIT_MSG_CHANGELOG;
-  await execAsync(`git add . && git commit -m "${msg}"`);
+  await execAsync(`git add . && git commit -m "${msg}" && git push`);
 };

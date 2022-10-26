@@ -3,6 +3,7 @@ import { existsSync, readFileSync } from "fs";
 import path from "path";
 import { generateChangelogItems } from "./changeset";
 import { writeNpmrc } from "./npm";
+import { doCommitAfterBumpVersion } from "./git";
 
 interface IBumpVersion {
   versionCmd?: string;
@@ -71,5 +72,9 @@ export const bumpVersion = async ({ versionCmd, npmToken }: IBumpVersion) => {
   //   publish
   console.log("Publish Package...");
   await execAsync(`npm publish --registry=${pkgJson?.publishConfig?.registry}`);
+  
+  // do commit
+  console.log("Commiting Changelog...");
+  await doCommitAfterBumpVersion()
   console.log("Success 👍");
 };
