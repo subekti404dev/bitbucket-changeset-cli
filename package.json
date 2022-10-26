@@ -1,5 +1,5 @@
 {
-  "name": "bitbucket-changeset-git-cli",
+  "name": "bitbucket-changeset-cli",
   "version": "1.0.0",
   "description": "cli tool",
   "main": "src/index.js",
@@ -11,5 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "commander": "^9.4.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.25.0"
+  },
+  "publishConfig": {
+    "registry": "https://verdaccio.urip13.duckdns.org"
   }
 }
