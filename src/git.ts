@@ -27,11 +27,26 @@ export const getCommitMessagesAfterLastTag = async () => {
 
   const commitMessages = (stdout || "")
     .split("\n")
-    .filter((x: string) => x && !x.toLowerCase().includes('update changelog'));
+    .filter((x: string) => x && !x.toLowerCase().includes("update changelog"));
   return commitMessages;
 };
 
-export const doCommitAfterBumpVersion = async (msgArg?: string) => {
+export const doCommitAfterBumpVersion = async (
+  mainBranch: string,
+  msgArg?: string
+) => {
   const msg = msgArg || COMMIT_MSG_CHANGELOG;
-  await execAsync(`git add . && git commit -m "${msg}" && git push origin HEAD:master`);
+  await execAsync(
+    `git add . && git commit -m "${msg}" && git push origin HEAD:${mainBranch}`
+  );
+};
+
+export const getCurrBranch = async () => {
+  const stdout = (await execAsync(`git branch`)) as string;
+  let branchName = (stdout || "").replace("* ", "").trim();
+  if (branchName.includes("no branch")) {
+    const stdout2 = (await execAsync(`echo $BITBUCKET_BRANCH`)) as string;
+    branchName = stdout2.trim();
+  }
+  return branchName;
 };

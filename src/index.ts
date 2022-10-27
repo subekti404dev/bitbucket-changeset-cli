@@ -7,9 +7,15 @@ async function main() {
     .version(pkgJson.version)
     .description(pkgJson.description)
     .argument("<npm-token>", "npm token")
-    .action((npmToken: string) => {
-      // console.log({ npmToken });
+    .option(
+      "-mb, --main-branch <main-branch-name>",
+      "main branch name",
+      "master"
+    )
+    .action((npmToken: string, opts: any) => {
+      const { mainBranch } = opts;
       bumpVersion({
+        mainBranch,
         npmToken,
       });
     });
