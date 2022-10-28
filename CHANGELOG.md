@@ -1,5 +1,11 @@
 # simple-changesets
 
+## 1.1.1
+
+### Minor Changes
+
+- feat: add changeType detection
+
 ## 1.0.4
 
 ### Patch Changes

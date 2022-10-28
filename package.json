@@ -1,6 +1,6 @@
 {
   "name": "simple-changesets",
-  "version": "1.0.10",
+  "version": "1.1.1",
   "description": "CLI to bump npm version and publish to registry",
   "bin": {
     "simple-changesets": "./dist/simple-changesets.js"
